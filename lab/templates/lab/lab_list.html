@@ -1,0 +1,37 @@
+{% extends 'base.html '%}
+
+{# 页面标题 #}
+{% block title %}
+实验室
+{% endblock %}
+
+{# 导航栏-选中状态 #}
+{% block nav_lab_active %}
+    active
+{% endblock %}
+
+{# 页面内容 #}
+{% block content %}
+    {% for lab in labs %}
+        <a href="{% url 'lab_detail' lab.pk %}">
+        <h3>{{ lab.title }}</h3>
+        </a>
+        <p>{{ lab.content|truncatechars_html:60}}</p>
+        <hr>
+    {% empty %}
+        <pre style="font-family: 'MS PGothic';">
+　　　　　　 　　　　　　/ヽ　　　　　　 /ヽ 
+　　　　　　　　　　　　/　ヽ　　　　　 /　ヽ 
+　　＿＿＿＿＿＿ /U　ヽ＿＿＿/　　 ヽ 
+　　|　＿＿＿＿　／　　　U　　　　:::::::::::U:＼ 
+　　| |　　　　　　 /／ ＿__　　　＼　　::::::::::::::|
+　　| |　  4 0 4　 |　　|　　 |　　　　　U :::::::::::::| 
+　　| |　　　　　　 | U |　　　|　　　　　　::::::U::::| 
+　　| |　　　　　　 |　├―-┤　U.....:::::::::::::::::::/ 
+　　| |＿＿＿＿　ヽ　　　　　.....:::::::::::::::::::::::< 
+　 └＿＿＿／￣￣　　　　　　:::::::::::::::::::::::::| 
+　　|＼　　　 |　　　　　　　　　　　:::::::::::::::::::::::| 
+　　＼ ＼　 ＼＿＿＿　　　　　 ::::::
+</pre>
+    {% endfor %}
+{% endblock %}

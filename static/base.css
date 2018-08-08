@@ -1,0 +1,14 @@
+@charset "UTF-8";
+* {
+    margin: 0;
+    padding: 0;
+}
+nav {
+	min-height: 80px!important;
+}
+img.logo {
+	height: 50px;
+}
+body {
+	padding-top: 80px;
+}

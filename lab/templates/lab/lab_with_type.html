@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{# 页面标题 #}
+{% block title %}
+    {{ lab_type.type_name }}
+{% endblock %}
+
+{# 页面内容 #}
+{% block content %}
+	{% for lab in labs %}
+	    <a href="{% url 'lab_detail' lab.pk %}">
+	        <h3>{{ lab.title }}</h3>
+	    </a>
+	    <p>{{ lab.content|truncatechars_html:60}}</p>
+	    <hr>
+	{% empty %}
+	    <p>暂无内容</p>
+	{% endfor %}
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{# 页面标题 #}
+{% block title %}
+    {{ diary.title }}
+{% endblock %}
+
+{% block header_extends %}
+    <link rel="stylesheet" href="{% static 'diary/diary.css' %}">
+{% endblock %}
+
+{# 页面内容 #}
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<a href="{% url 'diary_list'%}">日记</a>
+					<h3>{{ diary.title }}</h3>
+					<p>作者:{{ diary.author }}</p>
+					<p>发表时间:{{ diary.created_time|date:"Y-m-d H:i:s" }}</p>
+					<a href="{% url 'diary_with_type' diary.diary_type.pk %}">
+						<p>分类:{{ diary.diary_type }}</p>
+					</a>
+					<pre>{{ diary.content }}</pre>
+				</div>
+			</div>
+		</div>
+	</div>
+	<nav aria-label="...">
+		<ul class="pager">
+			<li class="previous"><a href="#"><span aria-hidden="true">&larr;</span>
+					上一篇</a></li>
+			<li class="next"><a href="#">下一篇 <span aria-hidden="true">&rarr;</span></a></li>
+		</ul>
+	</nav>
+</div>
+{% endblock %}
